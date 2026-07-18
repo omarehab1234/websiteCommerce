@@ -1,0 +1,193 @@
+/* ==========================================================================
+   Cilantro Admin — Product Create Form
+   Palette: Black + Yellow
+   ========================================================================== */
+
+:root {
+  --black: #121212;
+  --black-soft: #1c1c1c;
+  --charcoal-grey: #2b2b2b;
+  --yellow: #f5c518;
+  --yellow-dark: #d9ac00;
+  --yellow-light: #ffe066;
+  --cream: #faf7f0;
+  --charcoal: #1a1a1a;
+  --text-muted: #6b6b6b;
+  --error: #d64545;
+  --radius: 14px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.14);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--black);
+  color: var(--cream);
+  line-height: 1.6;
+  margin: 0;
+  padding: 2.5rem 1.5rem;
+}
+
+/* ==========================================================================
+   Page Heading
+   ========================================================================== */
+
+body > h1 {
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 1.9rem;
+  max-width: 560px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+body > h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 4px;
+  background: var(--yellow);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Form Card
+   ========================================================================== */
+
+form {
+  max-width: 560px;
+  margin: 0 auto;
+  background-color: var(--black-soft);
+  border: 1px solid rgba(245, 197, 24, 0.12);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  padding: 2rem 2rem 2.25rem;
+}
+
+form > div {
+  margin-bottom: 1.4rem;
+}
+
+form br {
+  display: none;
+}
+
+label {
+  display: block;
+  color: var(--yellow);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--charcoal);
+  background-color: #fbfaf7;
+  transition: var(--transition);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--yellow);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.2);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236b6b6b'%3e%3cpath d='M5.5 7.5l4.5 4.5 4.5-4.5' stroke='%236b6b6b' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  padding-right: 2.4rem;
+}
+
+/* ==========================================================================
+   Error Messages
+   ========================================================================== */
+
+form p[style*="color:red"] {
+  color: var(--error) !important;
+  background-color: rgba(214, 69, 69, 0.08);
+  border: 1px solid rgba(214, 69, 69, 0.25);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0.5rem 0 0;
+}
+
+/* ==========================================================================
+   Submit Button
+   ========================================================================== */
+
+form > button[type="submit"] {
+  display: inline-block;
+  background-color: var(--yellow);
+  border: none;
+  color: var(--black);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  padding: 0.65rem 2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 0.5rem;
+}
+
+form > button[type="submit"]:hover {
+  background-color: var(--yellow-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(245, 197, 24, 0.4);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 575.98px) {
+  body {
+    padding: 1.5rem 1rem;
+  }
+
+  body > h1 {
+    font-size: 1.5rem;
+  }
+
+  form {
+    padding: 1.5rem 1.25rem 1.75rem;
+    border-radius: 10px;
+  }
+
+  form > button[type="submit"] {
+    width: 100%;
+    text-align: center;
+  }
+}

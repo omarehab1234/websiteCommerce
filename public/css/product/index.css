@@ -1,0 +1,358 @@
+/* ==========================================================================
+   Cilantro Admin — Dashboard Styles
+   Palette: Black + Yellow
+   ========================================================================== */
+
+:root {
+  --black: #121212;
+  --black-soft: #1c1c1c;
+  --charcoal-grey: #2b2b2b;
+  --yellow: #f5c518;
+  --yellow-dark: #d9ac00;
+  --yellow-light: #ffe066;
+  --cream: #faf7f0;
+  --charcoal: #1a1a1a;
+  --text-muted: #6b6b6b;
+  --success: #2f9e5c;
+  --success-dark: #257c48;
+  --radius: 14px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.14);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.22);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #f4f2ec;
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Top Navbar
+   ========================================================================== */
+
+.navbar.bg-dark {
+  background-color: var(--black) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar-brand.text-warning {
+  color: var(--yellow) !important;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+
+.navbar .text-white {
+  font-size: 0.95rem;
+  color: rgba(250, 247, 240, 0.85) !important;
+}
+
+.navbar .text-white strong {
+  color: var(--cream);
+}
+
+/* ==========================================================================
+   Page Heading
+   ========================================================================== */
+
+.container h2.mb-4 {
+  color: var(--black);
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.container h2.mb-4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 4px;
+  background: var(--yellow);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Stat Cards
+   ========================================================================== */
+
+.card {
+  border: none;
+  border-radius: var(--radius);
+  background-color: #fff;
+  box-shadow: var(--shadow-sm) !important;
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.card-body {
+  padding: 2rem 1.5rem;
+}
+
+.card-body h5 {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+}
+
+.card-body h2 {
+  color: var(--black);
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+
+.card .btn-warning {
+  background-color: var(--yellow);
+  border: none;
+  color: var(--black);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.45rem 1.4rem;
+  transition: var(--transition);
+}
+
+.card .btn-warning:hover {
+  background-color: var(--yellow-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 197, 24, 0.4);
+}
+
+/* ==========================================================================
+   Quick Actions
+   ========================================================================== */
+
+h4.mb-3 {
+  color: var(--black);
+  font-weight: 700;
+}
+
+.btn-success {
+  background-color: var(--success);
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.5rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-success:hover {
+  background-color: var(--success-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(47, 158, 92, 0.35);
+}
+
+.btn-primary {
+  background-color: var(--black);
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.5rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background-color: var(--yellow);
+  color: var(--black);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 197, 24, 0.4);
+}
+
+/* ==========================================================================
+   Page Titles (h1) & Flash Messages
+   ========================================================================== */
+
+.container h1 {
+  color: var(--black);
+  font-weight: 700;
+  font-size: 1.9rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.container h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 4px;
+  background: var(--yellow);
+  border-radius: 4px;
+}
+
+.container p {
+  background-color: rgba(47, 158, 92, 0.1);
+  border: 1px solid rgba(47, 158, 92, 0.35);
+  color: var(--success-dark);
+  padding: 0.75rem 1.1rem;
+  border-radius: 10px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   Users Table
+   ========================================================================== */
+
+table[border] {
+  border: none !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  background-color: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+table[border] th,
+table[border] td {
+  border: none !important;
+  padding: 0.9rem 1.1rem !important;
+  text-align: left;
+}
+
+table[border] th {
+  background-color: var(--black);
+  color: var(--yellow);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+table[border] tr:not(:first-child) {
+  border-top: 1px solid #eee;
+}
+
+table[border] tr:not(:first-child):hover {
+  background-color: #faf7ec;
+}
+
+table[border] td {
+  color: var(--charcoal);
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+table[border] td form {
+  display: inline-block;
+  margin: 0 0.35rem 0 0;
+}
+
+table[border] td button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+/* Make Admin / Remove Admin button */
+table[border] td form:first-of-type button {
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+table[border] td form:first-of-type button:hover {
+  background-color: var(--yellow-light);
+  box-shadow: 0 3px 10px rgba(245, 197, 24, 0.4);
+}
+
+/* Delete button */
+table[border] td form:last-of-type button {
+  background-color: #fff;
+  color: #d64545;
+  border: 1px solid #d64545;
+}
+
+table[border] td form:last-of-type button:hover {
+  background-color: #d64545;
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(214, 69, 69, 0.35);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+  .navbar.bg-dark {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .container.py-5 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .card-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .card-body h2 {
+    font-size: 2rem;
+  }
+
+  .d-flex.gap-3 {
+    flex-direction: column;
+  }
+
+  .btn-success,
+  .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  h2.mb-4 {
+    font-size: 1.5rem;
+  }
+
+  h4.mb-3 {
+    font-size: 1.15rem;
+  }
+
+  .container h1 {
+    font-size: 1.5rem;
+  }
+
+  table[border] {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  table[border] td form {
+    display: block;
+    margin: 0 0 0.4rem 0;
+  }
+
+  table[border] td button {
+    width: 100%;
+  }
+}

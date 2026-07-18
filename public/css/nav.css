@@ -1,0 +1,331 @@
+/* ============================================================
+   Cilantro — nav.css
+   Drop-in restyle for the Bootstrap navbar. No HTML changes.
+   Palette: charcoal #121212 · mustard #f5c518 · cream #faf7f0
+   ============================================================ */
+
+:root {
+  --ink: #121212;
+  --ink-soft: #1c1c1c;
+  --mustard: #f5c518;
+  --mustard-deep: #e0af00;
+  --cream: #faf7f0;
+  --line: rgba(250, 247, 240, 0.12);
+}
+
+/* ---------- Bar ---------- */
+.navbar.bg-dark {
+  background: rgba(18, 18, 18, 0.85) !important;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  transition: padding 0.3s ease;
+}
+
+.navbar .container {
+  align-items: center;
+}
+
+/* ---------- Brand ---------- */
+.navbar-brand.fw-bold {
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: var(--cream) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.navbar-brand.fw-bold::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--mustard);
+  box-shadow: 0 0 0 4px rgba(245, 197, 24, 0.2), 0 0 18px 2px rgba(245, 197, 24, 0.5);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.navbar-brand.fw-bold:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.75; }
+}
+
+/* ---------- Links ---------- */
+.navbar-nav {
+  gap: 0.35rem;
+  margin-left: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(250, 247, 240, 0.7) !important;
+  font-weight: 500;
+  font-size: 0.98rem;
+  padding: 0.5rem 0.95rem !important;
+  border-radius: 999px;
+  position: relative;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 0;
+  height: 2px;
+  background: var(--mustard);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--cream) !important;
+  background: rgba(250, 247, 240, 0.06);
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 40%;
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--ink) !important;
+  background: var(--mustard);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(245, 197, 24, 0.35);
+}
+
+.navbar-nav .nav-link.active::after {
+  width: 0;
+}
+
+/* ---------- Search ---------- */
+.navbar form.d-flex {
+  position: relative;
+}
+
+.navbar .form-control {
+  background: rgba(250, 247, 240, 0.08);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem 0.55rem 2.4rem;
+  min-width: 230px;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar form.d-flex::before {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  background: no-repeat center/contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23faf7f0' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E");
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.navbar .form-control::placeholder {
+  color: rgba(250, 247, 240, 0.45);
+}
+
+.navbar .form-control:focus {
+  outline: none;
+  background: rgba(250, 247, 240, 0.12);
+  border-color: var(--mustard);
+  box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.2);
+}
+
+/* ---------- Buttons ---------- */
+.navbar .btn {
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.5rem 1.15rem;
+  transition: transform 0.18s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.navbar .btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Cart — ghost outline */
+.navbar .btn-outline-light {
+  border: 1px solid var(--line);
+  color: var(--cream);
+  position: relative;
+  padding-left: 2.3rem;
+}
+
+.navbar .btn-outline-light::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  background: no-repeat center/contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23faf7f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='21' r='1'/%3E%3Ccircle cx='20' cy='21' r='1'/%3E%3Cpath d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/%3E%3C/svg%3E");
+}
+
+.navbar .btn-outline-light:hover {
+  background: rgba(250, 247, 240, 0.1);
+  border-color: rgba(250, 247, 240, 0.4);
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+
+/* Login / Register — mustard */
+.navbar .btn-warning {
+  background: var(--mustard);
+  border: none;
+  color: var(--ink);
+  box-shadow: 0 6px 18px rgba(245, 197, 24, 0.3);
+}
+
+.navbar .btn-warning:hover {
+  background: var(--mustard-deep);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(245, 197, 24, 0.45);
+}
+
+.navbar .btn-outline-warning {
+  border: 1px solid var(--mustard);
+  color: var(--mustard);
+  background: transparent;
+}
+
+.navbar .btn-outline-warning:hover {
+  background: var(--mustard);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+/* ---------- Auth / user menu ---------- */
+.user-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.3rem 0.4rem 0.3rem 1rem;
+  border-radius: 999px;
+  background: rgba(250, 247, 240, 0.06);
+  border: 1px solid var(--line);
+}
+
+.user-name {
+  color: var(--cream);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* ---------- Mobile toggler ---------- */
+.navbar-toggler {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.45rem 0.6rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.3);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' stroke='%23f5c518' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M4 8h22M4 15h22M4 22h22'/%3E%3C/svg%3E");
+}
+
+/* ---------- Mobile layout ---------- */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(28, 28, 28, 0.9);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+  }
+
+  .navbar-nav {
+    margin-left: 0;
+    gap: 0.15rem;
+  }
+
+  .navbar form.d-flex {
+    margin: 0.75rem 0;
+  }
+
+  .navbar .form-control {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .navbar .btn,
+  .user-menu {
+    width: 100%;
+    justify-content: center;
+    margin: 0.25rem 0 !important;
+  }
+
+  .navbar form.d-flex.me-3 {
+    margin-right: 0 !important;
+  }
+}
+
+/* ---------- Motion safety ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .navbar-brand.fw-bold::before { animation: none; }
+  .navbar * { transition: none !important; }
+}
+
+img { display: block; max-width: 100%; }
+
+::selection { background: var(--mustard); color: var(--ink); }
+
+a { text-decoration: none; }
+
+/* ------------------------------------------------------------------ */
+/* Navbar (if the x-navbar uses Bootstrap defaults)                    */
+/* ------------------------------------------------------------------ */
+.navbar {
+  backdrop-filter: blur(12px);
+  background: rgba(250, 247, 240, 0.8) !important;
+  border-bottom: 1px solid rgba(18, 18, 18, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+.navbar-brand {
+  font-family: "Fraunces", serif;
+  font-weight: 900 !important;
+  letter-spacing: -0.02em;
+}
+
+/* Force active appearance via data attribute or URL matching */
+.navbar-nav .nav-link[aria-current="page"] {
+  color: var(--ink) !important;
+  background: var(--mustard);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(245, 197, 24, 0.35);
+}
+
+.navbar-nav .nav-link[aria-current="page"]::after {
+  width: 0;
+}
