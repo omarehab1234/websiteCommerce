@@ -56,52 +56,34 @@ class CartController extends Controller
         ,'shipping'=>$shipping]);
     }
 
-    public function store(Product $product){
+    public function store(Product $product,Request $req){
+        $quantity = $req->input('quantity',1);
         $cart = session()->get('cart', []);
         $currentQuantity = $cart[$product->id]['quantity'] ?? 0;
 
-        if ($currentQuantity >= $product->quantity) {
-            return back()->with('error', 'Sorry, there is not enough stock available.');
+        if ($currentQuantity + $quantity > $product->quantity) {
+            return redirect(url()->previous() . '#featured')
+            ->with('error', 'Sorry, there is not enough stock available.');
         }
         $cart[$product->id] = [
             'id' => $product->id,
             'name' => $product->name,
             'price' => $product->price,
             'image' => $product->image,
-            'quantity' => ($cart[$product->id]['quantity'] ?? 0) + 1,
+            'quantity' => ($cart[$product->id]['quantity'] ?? 0) + $quantity,
         ];
-        $subtotal = $this->subtotal($cart);
         session()->put('cart', $cart);
 
         return redirect(url()->previous() . '#featured')
         ->with('success', 'Product added to cart.');
     }
-    // for cart area
-    public function storeCart(Product $product){
-        $cart = session()->get('cart', []);
-        $currentQuantity = $cart[$product->id]['quantity'] ?? 0;
-
-        if ($currentQuantity >= $product->quantity) {
-            return back()->with('error', 'Sorry, there is not enough stock available.');
-        }
-        $cart[$product->id] = [
-            'id' => $product->id,
-            'name' => $product->name,
-            'price' => $product->price,
-            'image' => $product->image,
-            'quantity' => ($cart[$product->id]['quantity'] ?? 0) + 1,
-        ];
-
-        session()->put('cart', $cart);
-        return redirect(url()->previous() . '#cart')
-        ->with('success', 'Product was inc to cart.');
-    }
-
+    
     public function decrease(Product $product){
         $cart = session()->get('cart',[]);
         $quan = $cart[$product->id]['quantity'] ?? 0; 
         if ($quan == 0) {
-            return back()->with('error', 'Sorry, you can\'t do low than zero(0)');
+            return redirect(url()->previous() . '#featured')
+            ->with('error', 'Sorry, you can\'t do low than zero(0)');
         }
 
         $cart[$product->id] = [
@@ -112,8 +94,16 @@ class CartController extends Controller
             'quantity' => ($cart[$product->id]['quantity'] ?? 0) - 1,
         ];
         session()->put('cart', $cart);
-        return redirect(url()->previous() . '#cart')
+        return redirect(url()->previous() . '#featured')
         ->with('success', 'Product was dec to cart.');
+
+    }
+    public  function remove(Product $product){
+        $cart = session()->get('cart',[]);
+        unset($cart[$product->id]);
+        session()->put("cart",array_values($cart));
+        return redirect(url()->previous() . '#featured')
+        ->with('success', 'Product was removed.');
 
     }
 

@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart — Cilantro</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cart/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+    
 </head>
 <body>
 
 <x-navbar />
 
-@if(session('error'))
-    <p style="color:red">
-        {{ session('error') }}
-    </p>
-@endif
+
 <div class="cart-wrapper">
   <!-- Hero Section -->
   <section class="cart-hero">
@@ -57,7 +56,7 @@
 
   <div class="cart-container">
     <!-- Cart Items -->
-    <section class="cart-items" id ='cart'>
+    <section class="cart-items" id ='featured'>
       <h2 class="section-title">Items in Cart</h2>
 
       @forelse($cartItems as $product)
@@ -82,14 +81,17 @@
                 <button class="qty-btn" data-action="decrease">−</button>
             </form>
 
-              <input type="number" class="qty-input" value="{{ $product['quantity'] ?? 1 }}" min="1" />
-                <form action="{{ route('cart.inc', $product['id']) }}" method="POST">
+              <input type="number" class="qty-input" readonly value="{{ $product['quantity'] ?? 1 }}" min="1" />
+                <form action="{{ route('cart.add', $product['id']) }}" method="POST">
                     @csrf
                     <button type="submit" class="qty-btn">+</button>
                 </form>
 
             </div>
-            <button class="remove-btn" data-action="remove">Remove</button>
+              <form action="{{ route('cart.remove', $product['id']) }}" method="POST">
+                    @csrf
+                    <button class="remove-btn" data-action="remove">Remove</button>
+              </form>
           </div>
         </div>
       @empty
@@ -101,9 +103,14 @@
           </svg>
           <h3>Your cart is empty</h3>
           <p>Explore our fresh, gourmet selection and add items to get started.</p>
-          <a href="/" class="btn-primary">Continue Shopping</a>
+          <a href="{{route('products.show')}}" class="btn-primary">Continue Shopping</a>
         </div>
       @endforelse
+      @if(session('error'))
+          <p style="color:red">
+              {{ session('error') }}
+          </p>
+      @endif
     </section>
 
     <!-- Order Summary -->
@@ -216,7 +223,6 @@
     <!-- </div> -->
   <!-- </section> -->
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 </html>

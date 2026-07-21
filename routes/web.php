@@ -41,6 +41,7 @@ Route::delete('/users/{user}', [UserController::class, 'destroyDash'])->name('us
 
 // product
 Route::get('/products/index', [ProductController::class, 'show'])->name('products.index');
+Route::get('/products/indexUser', [ProductController::class, 'showUser'])->name('products.show');
 
 Route::get('/products/create',[ProductController::class,'showForm'])->name('products.create');
 
@@ -49,14 +50,17 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 Route::patch('/products/{product}/edit', [ProductController::class, 'editProd'])->name('products.edit');
 
 Route::delete('/products/{product}/destroy', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/product/{product}/view',[ProductController::class,'view'])->name('product.view');
 
 // cart
+// this for add by + or Add
 Route::post('/cart/{product}/cart',[CartController::class,'store'])->name('cart.add');
 
 Route::post('/cart/{product}/dec',[CartController::class,'decrease'])->name('cart.dec');
-Route::post('/cart/{product}/inc',[CartController::class,'storeCart'])->name('cart.inc');
 Route::get('/cart/index',[CartController::class,'show'])->name('cart.index');
 Route::get('/cart/done',[CartController::class,'check'])->name('cart.done');
+
+Route::post('/cart/{product}/remove',[CartController::class,'remove'])->name('cart.remove');
 
 
 // category

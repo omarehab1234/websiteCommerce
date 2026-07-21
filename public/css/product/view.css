@@ -1,0 +1,346 @@
+/* =========================================================
+   CILANTRO — Product Detail View
+   Shares tokens with product/show.css so both pages read as
+   one system. If you end up with more pages like this,
+   worth pulling the :root block into a single tokens.css
+   both files import — happy to set that up if useful.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+  --ink: #16140f;
+  --ink-soft: #3a362e;
+  --cream: #f8f3e8;
+  --cream-dim: #efe8d8;
+  --mustard: #f0b400;
+  --mustard-deep: #c98a00;
+  --mustard-pale: #fbe6a8;
+  --sage: #55765a;
+  --sage-deep: #35492f;
+  --rust: #b5482f;
+  --white: #fffdf8;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+
+  --shadow-sm: 0 2px 10px rgba(22, 20, 15, 0.08);
+  --shadow-md: 0 14px 32px rgba(22, 20, 15, 0.14);
+  --shadow-glow: 0 10px 28px rgba(240, 180, 0, 0.35);
+  --shadow-glow-lg: 0 16px 40px rgba(240, 180, 0, 0.45);
+}
+
+body {
+  background: var(--cream);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ===== SECTION / GRID ===== */
+.product-view-section {
+  padding: 60px 20px 80px;
+  background: var(--cream);
+}
+
+.product-view-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .product-view-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ===== IMAGE COLUMN ===== */
+.product-view-image-col {
+  position: sticky;
+  top: 90px;
+}
+
+@media (max-width: 900px) {
+  .product-view-image-col {
+    position: static;
+  }
+}
+
+.product-view-image-wrap {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: var(--cream-dim);
+  aspect-ratio: 1;
+}
+
+.product-view-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-view-fresh-badge {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  padding: 7px 14px 7px 12px;
+  background: var(--sage);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  clip-path: polygon(0 0, 100% 0, 88% 50%, 100% 100%, 0 100%);
+}
+
+/* ===== CONTENT COLUMN ===== */
+.product-view-content-col {
+  padding-top: 8px;
+}
+
+.product-view-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sage-deep);
+  background: rgba(85, 118, 90, 0.12);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--r-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.2rem;
+}
+
+.product-view-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.4rem;
+}
+
+.product-view-price-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px dashed rgba(22, 20, 15, 0.14);
+}
+
+.product-view-price {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.product-view-stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--r-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.product-view-stock-ok {
+  background: rgba(85, 118, 90, 0.14);
+  color: var(--sage-deep);
+}
+
+.product-view-stock-low {
+  background: rgba(181, 72, 47, 0.12);
+  color: var(--rust);
+}
+
+.product-view-description {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 2.2rem;
+  max-width: 42ch;
+}
+
+/* ===== ACTIONS ===== */
+.product-view-actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.product-view-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.product-view-form h5 {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Quantity selector — same shape/behavior as the products list page */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(22, 20, 15, 0.14);
+  border-radius: var(--r-sm);
+  background: var(--cream-dim);
+}
+
+.qty-btn {
+  background: transparent;
+  border: none;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  transition: background 0.2s ease;
+}
+
+.qty-btn:hover {
+  background: rgba(240, 180, 0, 0.15);
+}
+
+.qty-input {
+  border: none;
+  background: transparent;
+  width: 52px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.qty-input:focus {
+  outline: none;
+}
+
+/* Primary button — shared visual language with products page */
+.btn-add-to-cart {
+  background: var(--mustard);
+  color: var(--ink);
+  border: none;
+  padding: 0.95rem 2rem;
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-add-to-cart:hover {
+  background: var(--mustard-deep);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-lg);
+}
+
+.btn-add-to-cart:focus-visible {
+  outline: 3px solid var(--mustard-pale);
+  outline-offset: 2px;
+}
+
+/* Secondary / ghost button for "Back" */
+.btn-back-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--ink-soft);
+  border: 2px solid rgba(22, 20, 15, 0.14);
+  padding: 0.9rem 1.7rem;
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.92rem;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-back-ghost:hover {
+  border-color: var(--sage);
+  color: var(--sage-deep);
+  transform: translateX(-3px);
+}
+
+.btn-back-ghost:focus-visible {
+  outline: 3px solid var(--mustard-pale);
+  outline-offset: 2px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 480px) {
+  .product-view-section {
+    padding: 40px 16px 60px;
+  }
+
+  .product-view-title {
+    font-size: 1.7rem;
+  }
+
+  .product-view-price {
+    font-size: 1.8rem;
+  }
+
+  .product-view-description {
+    max-width: none;
+  }
+
+  .product-view-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-view-form {
+    width: 100%;
+  }
+
+  .btn-add-to-cart,
+  .btn-back-ghost {
+    justify-content: center;
+    width: 100%;
+  }
+}

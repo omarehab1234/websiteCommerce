@@ -11,6 +11,17 @@ use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
+    function view(Product $product){
+        
+
+        return view('product.view',['product'=>$product]);
+    }
+    function showUser(){
+        $products = Product::all();
+
+        return view('product.indexUser',['products'=>$products]);
+    }
+
     function show(){
         $products = Product::all();
 

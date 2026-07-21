@@ -36,7 +36,7 @@
         </p>
 
         <div class="hero-actions">
-            <a href="#featured" class="btn btn-hero-primary btn-lg">
+            <a href="{{route('products.show')}}" class="btn btn-hero-primary btn-lg">
                 <i class="bi bi-bag-heart"></i> Shop Now
             </a>
             <a href="{{ route('contact')}}" class="btn btn-hero-ghost btn-lg">
@@ -95,7 +95,7 @@
             <span class="section-kicker">Handpicked for you</span>
             <h2 class="section-title">Featured Products</h2>
         </div>
-        <a href="#" class="section-link">View all <i class="bi bi-arrow-right"></i></a>
+        <a href="{{route('products.show')}}" class="section-link">View all <i class="bi bi-arrow-right"></i></a>
     </div>
 
     <div class="row g-4">

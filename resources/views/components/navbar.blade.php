@@ -25,11 +25,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Products</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Categories</a>
+                    @if(Route::currentRouteName() == 'products.show')
+                        <a class="nav-link  active" href="{{route('products.show')}}">Products</a>
+                    @else
+                        <a class="nav-link " href="{{route('products.show')}}">Products</a>
+                    @endif
                 </li>
 
                 <li class="nav-item">

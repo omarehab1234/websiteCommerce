@@ -14,12 +14,20 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')
+            ->nullable()
+            ->constrained()
+            ->nullOnDelete();;
 
-            $table->decimal('total_price', 8, 2);
+            $table->decimal('total_price', 10, 2);
 
             $table->string('status')->default('Pending');
 
+            $table->string('payment_method')->default('Cash');
+            $table->string('payment_status')->default('Pending');
+
+            $table->string('phone');
+            $table->text('address');
             $table->timestamps();
         });
     }

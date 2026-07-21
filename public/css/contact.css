@@ -1,294 +1,380 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap");
+
 :root {
-            --ink: #121212;
-            --ink-soft: #2a2a2a;
-            --cream: #faf7f0;
-            --mustard: #f5c518;
-            --mustard-deep: #d9a900;
-            --leaf: #fed338ee;
-            --radius: 20px;
-        }
+    --ink: #121212;
+    --ink-soft: #2a2a2a;
+    --cream: #faf7f0;
+    --mustard: #f5c518;
+    --mustard-deep: #d9a900;
+    --leaf: #fed338ee;
+    --radius: 20px;
 
-        * { box-sizing: border-box; }
+  /* ---- Type ---- */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background:
-                radial-gradient(1200px 500px at 85% -10%, rgba(245,197,24,.12), transparent 60%),
-                var(--cream);
-            color: var(--ink);
-            margin: 0;
-        }
+  /* ---- Space scale ---- */
+  --sp-1: 0.4rem;
+  --sp-2: 0.8rem;
+  --sp-3: 1.2rem;
+  --sp-4: 1.6rem;
+  --sp-5: 2.4rem;
+  --sp-6: 4rem;
 
-        .display-fraunces {
-            font-family: 'Fraunces', Georgia, serif;
-            letter-spacing: -.02em;
-        }
+  /* ---- Radius scale ---- */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-pill: 999px;
 
-        /* ---------- HERO ---------- */
-        .contact-hero {
-            position: relative;
-            overflow: hidden;
-            background: var(--ink);
-            color: var(--cream);
-            border-radius: 0 0 36px 36px;
-            padding: clamp(3.5rem, 8vw, 6.5rem) 1rem clamp(4.5rem, 9vw, 7rem);
-            text-align: center;
-        }
-        .contact-hero::before,
-        .contact-hero::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(70px);
-            opacity: .55;
-            z-index: 0;
-        }
-        .contact-hero::before {
-            width: 340px; height: 340px;
-            background: var(--mustard);
-            top: -120px; right: -60px;
-            animation: float1 12s ease-in-out infinite;
-        }
-        .contact-hero::after {
-            width: 300px; height: 300px;
-            background: var(--leaf);
-            bottom: -140px; left: -80px;
-            animation: float2 14s ease-in-out infinite;
-        }
-        .contact-hero > * { position: relative; z-index: 1; }
+  /* ---- Shadow: warm-tinted, not flat black ---- */
+  --shadow-sm: 0 2px 10px rgba(22, 20, 15, 0.08);
+  --shadow-md: 0 14px 32px rgba(22, 20, 15, 0.14);
+  --shadow-glow: 0 10px 28px rgba(240, 180, 0, 0.35);
+  --shadow-glow-lg: 0 16px 40px rgba(240, 180, 0, 0.45);
+}
 
-        @keyframes float1 {
-            50% { transform: translate(-30px, 40px) scale(1.1); }
-        }
-        @keyframes float2 {
-            50% { transform: translate(40px, -30px) scale(1.08); }
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            padding: .4rem 1rem;
-            border: 1px solid rgba(245,197,24,.4);
-            border-radius: 999px;
-            font-size: .78rem;
-            font-weight: 600;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            color: var(--mustard);
-            background: rgba(245,197,24,.08);
-            margin-bottom: 1.5rem;
-        }
-        .eyebrow .dot {
-            width: 8px; height: 8px; border-radius: 50%;
-            background: var(--mustard);
-            box-shadow: 0 0 0 0 rgba(245,197,24,.7);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            70% { box-shadow: 0 0 0 8px rgba(245,197,24,0); }
-            100% { box-shadow: 0 0 0 0 rgba(245,197,24,0); }
-        }
+body {
+  background: var(--cream);
+  font-family: var(--font-body);
+  color: var(--ink);
+  line-height: 1.6;
+}
 
-        .contact-hero h1 {
-            font-size: clamp(2.4rem, 6vw, 4.2rem);
-            font-weight: 700;
-            line-height: 1.05;
-            margin: 0 auto 1rem;
-            max-width: 14ch;
-        }
-        .contact-hero h1 .accent {
-            background: linear-gradient(120deg, var(--mustard), var(--mustard-deep));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .contact-hero p {
-            max-width: 52ch;
-            margin: 0 auto;
-            color: rgba(250,247,240,.7);
-            font-size: clamp(1rem, 2.2vw, 1.15rem);
-            line-height: 1.6;
-        }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-        /* quick-contact chips */
-        .quick-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .75rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        .quick-chips a {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            padding: .6rem 1.15rem;
-            border-radius: 999px;
-            background: rgba(250,247,240,.08);
-            border: 1px solid rgba(250,247,240,.15);
-            color: var(--cream);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: .92rem;
-            transition: all .25s ease;
-        }
-        .quick-chips a:hover {
-            background: var(--mustard);
-            color: var(--ink);
-            border-color: var(--mustard);
-            transform: translateY(-2px);
-        }
+.contact-hero .eyebrow      { animation: slideDown 0.6s ease-out 0.1s both; }
+.contact-hero .display-fraonces,
+.contact-hero h1            { animation: slideDown 0.6s ease-out 0.2s both; }
+.contact-hero p              { animation: slideDown 0.6s ease-out 0.3s both; }
+.contact-hero .quick-chips   { animation: slideDown 0.6s ease-out 0.4s both; }
 
-        /* ---------- BRANCH CARDS ---------- */
-        .branches {
-            margin-top: -3.5rem;
-            position: relative;
-            z-index: 5;
-        }
+a { text-decoration: none; }
 
-        .branch-card {
-            background: #fff;
-            border: 1px solid rgba(18,18,18,.06);
-            border-radius: var(--radius);
-            padding: 1.75rem;
-            height: 100%;
-            box-shadow: 0 18px 45px -25px rgba(18,18,18,.35);
-            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            transform: translateY(24px);
-            animation: rise .6s ease forwards;
-        }
-        .branch-card:nth-child(1) { animation-delay: .05s; }
-        .branch-card:nth-child(2) { animation-delay: .18s; }
-        .branch-card:nth-child(3) { animation-delay: .31s; }
+.navbar.bg-dark {
+  background-color: var(--black) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 
-        @keyframes rise {
-            to { opacity: 1; transform: none; }
-        }
+.navbar-brand.text-warning {
+  color: var(--yellow) !important;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
 
-        .branch-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 28px 55px -25px rgba(18,18,18,.45);
-            border-color: rgba(245,197,24,.6);
-        }
+.navbar .text-white {
+  font-size: 0.95rem;
+  color: rgba(250, 247, 240, 0.85) !important;
+}
 
-        .branch-icon {
-            width: 54px; height: 54px;
-            border-radius: 16px;
-            display: grid; place-items: center;
-            background: linear-gradient(135deg, var(--mustard), var(--mustard-deep));
-            color: var(--ink);
-            font-size: 1.5rem;
-            margin-bottom: 1.25rem;
-            box-shadow: 0 10px 22px -10px rgba(245,197,24,.9);
-        }
+.navbar .text-white strong {
+  color: var(--cream);
+}------------------------------------------------------------------
+/* Navbar (if the x-navbar uses Bootstrap defaults)                    */
+/* ------------------------------------------------------------------ */
+.navbar {
+  backdrop-filter: blur(12px);
+  background: rgba(250, 247, 240, 0.8) !important;
+  border-bottom: 1px solid rgba(18, 18, 18, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
 
-        .branch-card h4 {
-            font-family: 'Fraunces', Georgia, serif;
-            font-weight: 600;
-            font-size: 1.5rem;
-            margin: 0 0 .15rem;
-        }
-        .branch-area {
-            display: inline-block;
-            font-size: .78rem;
-            font-weight: 600;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color:  #b38e08f7;
-            margin-bottom: 1.1rem;
-        }
+.navbar-brand {
+  font-family: "Fraunces", serif;
+  font-weight: 900 !important;
+  letter-spacing: -0.02em;
+}
+.display-fraunces {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: -.02em;
+}
 
-        .branch-line {
-            display: flex;
-            align-items: center;
-            gap: .7rem;
-            color: var(--ink-soft);
-            font-size: .95rem;
-            padding: .55rem 0;
-            border-top: 1px solid rgba(18,18,18,.06);
-        }
-        .branch-line i {
-            width: 20px;
-            text-align: center;
-            color: var(--mustard-deep);
-            font-size: 1rem;
-        }
+/* ---------- HERO ---------- */
+.contact-hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 0 0 36px 36px;
+    padding: clamp(3.5rem, 8vw, 6.5rem) 1rem clamp(4.5rem, 9vw, 7rem);
+    text-align: center;
+}
+.contact-hero::before,
+.contact-hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: .55;
+    z-index: 0;
+}
+.contact-hero::before {
+    width: 340px; height: 340px;
+    background: var(--mustard);
+    top: -120px; right: -60px;
+    animation: float1 12s ease-in-out infinite;
+}
+.contact-hero::after {
+    width: 300px; height: 300px;
+    background: var(--leaf);
+    bottom: -140px; left: -80px;
+    animation: float2 14s ease-in-out infinite;
+}
+.contact-hero > * { position: relative; z-index: 1; }
 
-        .branch-cta {
-            margin-top: auto;
-            padding-top: 1.4rem;
-        }
-        .branch-cta .btn {
-            width: 100%;
-            border-radius: 999px;
-            padding: .7rem 1rem;
-            font-weight: 600;
-            background: var(--ink);
-            color: var(--cream);
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: .5rem;
-            transition: all .25s ease;
-        }
-        .branch-cta .btn:hover {
-            background: var(--mustard);
-            color: var(--ink);
-            transform: translateY(-2px);
-        }
+@keyframes float1 {
+    50% { transform: translate(-30px, 40px) scale(1.1); }
+}
+@keyframes float2 {
+    50% { transform: translate(40px, -30px) scale(1.08); }
+}
 
-        /* ---------- CTA BANNER ---------- */
-        .contact-cta {
-            margin: 5rem auto 4rem;
-            background: var(--ink);
-            color: var(--cream);
-            border-radius: 28px;
-            padding: clamp(2.5rem, 6vw, 4rem);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .contact-cta::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(500px 200px at 50% 0%, rgba(245,197,24,.18), transparent 70%);
-        }
-        .contact-cta > * { position: relative; z-index: 1; }
-        .contact-cta h2 {
-            font-family: 'Fraunces', Georgia, serif;
-            font-weight: 700;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            margin-bottom: .75rem;
-        }
-        .contact-cta p {
-            color: rgba(250,247,240,.7);
-            max-width: 46ch;
-            margin: 0 auto 1.75rem;
-        }
-        .contact-cta .btn-mustard {
-            background: linear-gradient(120deg, var(--mustard), var(--mustard-deep));
-            color: var(--ink);
-            border: none;
-            border-radius: 999px;
-            padding: .8rem 2rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-        .contact-cta .btn-mustard:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 30px -12px rgba(245,197,24,.7);
-        }
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .4rem 1rem;
+    border: 1px solid rgba(245,197,24,.4);
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--mustard);
+    background: rgba(245,197,24,.08);
+    margin-bottom: 1.5rem;
+}
+.eyebrow .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--mustard);
+    box-shadow: 0 0 0 0 rgba(245,197,24,.7);
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    70% { box-shadow: 0 0 0 8px rgba(245,197,24,0); }
+    100% { box-shadow: 0 0 0 0 rgba(245,197,24,0); }
+}
 
-        @media (prefers-reduced-motion: reduce) {
-            * { animation: none !important; transition: none !important; }
-            .branch-card { opacity: 1; transform: none; }
+.contact-hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 auto 1rem;
+    max-width: 14ch;
+}
+.contact-hero h1 .accent {
+    background: linear-gradient(120deg, var(--mustard), var(--mustard-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.contact-hero p {
+    max-width: 52ch;
+    margin: 0 auto;
+    color: rgba(250,247,240,.7);
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    line-height: 1.6;
+}
+
+/* quick-contact chips */
+.quick-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.quick-chips a {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .6rem 1.15rem;
+    border-radius: 999px;
+    background: rgba(250,247,240,.08);
+    border: 1px solid rgba(250,247,240,.15);
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: .92rem;
+    transition: all .25s ease;
+}
+.quick-chips a:hover {
+    background: var(--mustard);
+    color: var(--ink);
+    border-color: var(--mustard);
+    transform: translateY(-2px);
+}
+
+/* ---------- BRANCH CARDS ---------- */
+.branches {
+    margin-top: -3.5rem;
+    position: relative;
+    z-index: 5;
+}
+
+.branch-card {
+    background: #fff;
+    border: 1px solid rgba(18,18,18,.06);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    height: 100%;
+    box-shadow: 0 18px 45px -25px rgba(18,18,18,.35);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: rise .6s ease forwards;
+}
+.branch-card:nth-child(1) { animation-delay: .05s; }
+.branch-card:nth-child(2) { animation-delay: .18s; }
+.branch-card:nth-child(3) { animation-delay: .31s; }
+
+@keyframes rise {
+    to { opacity: 1; transform: none; }
+}
+
+.branch-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 55px -25px rgba(18,18,18,.45);
+    border-color: rgba(245,197,24,.6);
+}
+
+.branch-icon {
+    width: 54px; height: 54px;
+    border-radius: 16px;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--mustard), var(--mustard-deep));
+    color: var(--ink);
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 10px 22px -10px rgba(245,197,24,.9);
+}
+
+.branch-card h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 .15rem;
+}
+.branch-area {
+    display: inline-block;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color:  #b38e08f7;
+    margin-bottom: 1.1rem;
+}
+
+.branch-line {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    color: var(--ink-soft);
+    font-size: .95rem;
+    padding: .55rem 0;
+    border-top: 1px solid rgba(18,18,18,.06);
+}
+.branch-line i {
+    width: 20px;
+    text-align: center;
+    color: var(--mustard-deep);
+    font-size: 1rem;
+}
+
+.branch-cta {
+    margin-top: auto;
+    padding-top: 1.4rem;
+}
+.branch-cta .btn {
+    width: 100%;
+    border-radius: 999px;
+    padding: .7rem 1rem;
+    font-weight: 600;
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    transition: all .25s ease;
+}
+.branch-cta .btn:hover {
+    background: var(--mustard);
+    color: var(--ink);
+    transform: translateY(-2px);
+}
+
+/* ---------- CTA BANNER ---------- */
+.contact-cta {
+    margin: 5rem auto 4rem;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 28px;
+    padding: clamp(2.5rem, 6vw, 4rem);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.contact-cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(500px 200px at 50% 0%, rgba(245,197,24,.18), transparent 70%);
+}
+.contact-cta > * { position: relative; z-index: 1; }
+.contact-cta h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: .75rem;
+}
+.contact-cta p {
+    color: rgba(250,247,240,.7);
+    max-width: 46ch;
+    margin: 0 auto 1.75rem;
+}
+.contact-cta .btn-mustard {
+    background: linear-gradient(120deg, var(--mustard), var(--mustard-deep));
+    color: var(--ink);
+    border: none;
+    border-radius: 999px;
+    padding: .8rem 2rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.contact-cta .btn-mustard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 30px -12px rgba(245,197,24,.7);
         }
+    
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .branch-card { opacity: 1; transform: none; }
+}
