@@ -42,15 +42,15 @@
 
             </ul>
 
-            <form class="d-flex me-3">
+            <!-- <form class="d-flex me-3">
                 <input class="form-control" placeholder="Search products...">
-            </form>
+            </form>-->
             <form action="{{ route('cart.index') }}" method="GET" class="d-inline">
                     @csrf
                     <button class="btn btn-outline-light me-2">
                         Cart
                     </button>
-            </form>
+            </form> 
             
             
             @auth

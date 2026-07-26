@@ -75,7 +75,7 @@
                     <h5>Orders</h5>
                     <h2>{{$orders}}</h2>
 
-                    <a href="#"
+                    <a href="{{ route('orders.showOrders') }}"
                        class="btn btn-warning mt-3">
                         View Orders
                     </a>

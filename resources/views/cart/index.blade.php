@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<x-navbar />
+<x-navbar/>
 
 
 <div class="cart-wrapper">
@@ -151,7 +151,7 @@
           <span>Total</span>
             <span class="total-amount">${{ number_format(($total) ?? 0, 2) }}</span>
         </div>
-        <form action = "{{route('cart.done')}}" method ='POST'>
+        <form action = "{{route('cart.done')}}" method ='GET'>
             @csrf
             <button class="btn-checkout">
             <span>Proceed to Checkout</span>
@@ -161,9 +161,10 @@
             </svg>
             </button>
         </form>
-<!-- here we need form -->
-        <button class="btn-continue-shopping">Continue Shopping</button>
-
+        <form action = "{{route('products.show')}}" method ='GET'>
+            @csrf
+          <button class="btn-continue-shopping">Continue Shopping</button>
+        </form>
         <div class="promo-section">
           <input type="text" class="promo-input" placeholder="Enter promo code" name="voucher"/>
           <button class="btn-apply">Apply</button>

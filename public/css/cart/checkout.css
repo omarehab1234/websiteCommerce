@@ -1,0 +1,350 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Manrope:wght@500;600;700;800&display=swap");
+
+.checkout-section {
+    --ink: #16140f;
+    --ink-soft: #3a362e;
+    --cream: #f8f3e8;
+    --cream-dim: #efe8d8;
+    --mustard: #f0b400;
+    --mustard-deep: #c98a00;
+    --mustard-pale: #fbe6a8;
+    --sage: #55765a;
+    --sage-deep: #35492f;
+    --rust: #b5482f;
+    --white: #fffdf8;
+
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body:
+        "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 22px;
+
+    --shadow-sm: 0 2px 10px rgba(22, 20, 15, 0.08);
+    --shadow-md: 0 14px 32px rgba(22, 20, 15, 0.14);
+    --shadow-glow: 0 10px 28px rgba(240, 180, 0, 0.35);
+
+    background:
+        radial-gradient(rgba(22, 20, 15, 0.035) 1px, transparent 1px) 0 0 / 24px
+            24px,
+        var(--cream);
+    font-family: var(--font-body);
+    color: var(--ink);
+    counter-reset: checkout-step;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .checkout-section *,
+    .checkout-section *::before,
+    .checkout-section *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+/* ===== CARDS ===== */
+.checkout-section .card {
+    position: relative;
+    border-radius: var(--r-lg) !important;
+    box-shadow: var(--shadow-sm) !important;
+    background: var(--white);
+    overflow: visible;
+    animation: riseIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.checkout-section .col-lg-8 .card {
+    animation-delay: 0.05s;
+}
+.checkout-section .col-lg-4 .card {
+    animation-delay: 0.15s;
+}
+
+/* Accent bar across the top of each card */
+.checkout-section .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, var(--mustard), var(--mustard-pale));
+}
+
+.checkout-section .col-lg-4 .card::before {
+    background: linear-gradient(90deg, var(--sage), #a9c4ac);
+}
+
+/* ===== HEADINGS — numbered like editorial steps ===== */
+.checkout-section h3,
+.checkout-section .col-lg-4 h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.checkout-section h3::before,
+.checkout-section .col-lg-4 h4::before {
+    counter-increment: checkout-step;
+    content: counter(checkout-step, decimal-leading-zero);
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--mustard);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.checkout-section h3 {
+    font-size: 1.35rem;
+}
+.checkout-section h3 i {
+    display: none;
+} /* replaced by numbered badge above */
+
+.checkout-section .col-lg-4 h4 {
+    font-size: 1.1rem;
+}
+
+.checkout-section h5 {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--ink-soft);
+    margin-bottom: 0.9rem !important;
+}
+
+.checkout-section hr {
+    border: none;
+    border-top: 1px dashed rgba(22, 20, 15, 0.16);
+    opacity: 1;
+    margin: 1.25rem 0;
+}
+
+/* ===== FORM FIELDS ===== */
+.checkout-section .form-label {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--ink-soft);
+    margin-bottom: 0.4rem;
+}
+
+.checkout-section .form-control {
+    border: 2px solid rgba(22, 20, 15, 0.1);
+    border-radius: var(--r-md);
+    padding: 0.7rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--cream-dim);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.checkout-section .form-control::placeholder {
+    color: rgba(58, 54, 46, 0.45);
+}
+
+.checkout-section .form-control:hover {
+    border-color: rgba(240, 180, 0, 0.5);
+}
+
+.checkout-section .form-control:focus {
+    border-color: var(--mustard);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(240, 180, 0, 0.22);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.checkout-section textarea.form-control {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* ===== PAYMENT METHOD — selectable tiles, no markup needed ===== */
+.checkout-section .form-check {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.1rem 1rem 3.4rem;
+    border: 2px solid rgba(22, 20, 15, 0.1);
+    border-radius: var(--r-md);
+    margin-bottom: 0.6rem !important;
+    margin-left: 0;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.checkout-section .form-check:hover {
+    border-color: var(--mustard);
+    background: rgba(240, 180, 0, 0.05);
+}
+
+/* Modern selected-state via :has() — reflects the actual checked input */
+.checkout-section .form-check:has(.form-check-input:checked) {
+    border-color: var(--mustard-deep);
+    background: var(--mustard-pale);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Icon per method, keyed off the value attribute already on the input */
+.checkout-section .form-check::before {
+    position: absolute;
+    left: 1.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.checkout-section .form-check:has(input[value="cash"])::before {
+    content: "💵";
+}
+.checkout-section .form-check:has(input[value="card"])::before {
+    content: "💳";
+}
+
+.checkout-section .form-check-input {
+    width: 1.15em;
+    height: 1.15em;
+    margin: 0;
+    accent-color: var(--mustard-deep);
+    cursor: pointer;
+}
+
+.checkout-section .form-check-input:focus-visible {
+    box-shadow: 0 0 0 4px rgba(240, 180, 0, 0.3);
+}
+
+.checkout-section .form-check-label {
+    font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.checkout-section .btn-warning {
+    background: var(--mustard) !important;
+    border: none !important;
+    color: var(--ink) !important;
+    font-family: var(--font-body);
+    font-weight: 800;
+    border-radius: 999px !important;
+    padding: 1rem 1.5rem !important;
+    box-shadow: var(--shadow-glow);
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.checkout-section .btn-warning:hover {
+    background: var(--ink) !important;
+    color: var(--mustard) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.checkout-section .btn-warning:active {
+    transform: translateY(0);
+}
+
+.checkout-section .btn-warning:focus-visible {
+    outline: 3px solid var(--mustard-pale);
+    outline-offset: 2px;
+}
+
+/* ===== ORDER SUMMARY — receipt styling ===== */
+.checkout-section .col-lg-4 .card {
+    position: sticky;
+    top: 90px;
+    background: var(--white);
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 44px,
+        rgba(22, 20, 15, 0.05) 44px,
+        rgba(22, 20, 15, 0.05) 45px
+    );
+    background-position: 0 6.5rem;
+}
+
+.checkout-section .col-lg-4 .d-flex {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    padding: 0.15rem 0;
+}
+
+.checkout-section .col-lg-4 .d-flex strong {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.checkout-section .col-lg-4 > .card > .d-flex:last-of-type {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--ink);
+    padding-top: 0.5rem;
+}
+
+.checkout-section .col-lg-4 > .card > .d-flex:last-of-type strong {
+    font-family: var(--font-display);
+    font-weight: 900;
+    color: var(--sage-deep);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991px) {
+    .checkout-section .col-lg-4 .card {
+        position: static;
+    }
+}
+
+@media (max-width: 576px) {
+    .checkout-section .card {
+        padding: 1.4rem !important;
+    }
+
+    .checkout-section .form-check {
+        padding-left: 3rem;
+    }
+
+    .checkout-section .btn-warning {
+        font-size: 0.92rem;
+    }
+}

@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Models\Product;
 
 Route::get('/', function () {
@@ -58,7 +59,10 @@ Route::post('/cart/{product}/cart',[CartController::class,'store'])->name('cart.
 
 Route::post('/cart/{product}/dec',[CartController::class,'decrease'])->name('cart.dec');
 Route::get('/cart/index',[CartController::class,'show'])->name('cart.index');
-Route::get('/cart/done',[CartController::class,'check'])->name('cart.done');
+
+Route::get('/cart/done',[CartController::class,'showForm'])->name('cart.done');
+
+Route::post('/cart/{total}/store',[CartController::class,'checkOut'])->name('checkout.store');
 
 Route::post('/cart/{product}/remove',[CartController::class,'remove'])->name('cart.remove');
 
@@ -75,3 +79,9 @@ Route::patch('/categories/{category}/edit',[CategoryController::class,'editCat']
 
 Route::delete('/categories/{category}/delete',[CategoryController::class,'destroy'])->name('categories.destroy');
 
+
+// order
+Route::get('/orders/index',[OrderController::class,'showOrder'])->name('orders.showOrders');
+Route::put('/orders/{order}/update',[OrderController::class,'updateStatus'])->name('orders.update');
+Route::get('/orders/{order}/details',[OrderController::class,'showDetails'])->name('orders.details');
+Route::delete('/orders/{order}/delete',[OrderController::class,'destroy'])->name('orders.destroy');
