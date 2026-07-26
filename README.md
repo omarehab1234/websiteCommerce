@@ -1,58 +1,174 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🌿 Cilantro E-Commerce Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-stack e-commerce web application built with **Laravel** that allows customers to browse products, manage their shopping cart, apply vouchers, and place orders. The project also includes an administrative dashboard for managing products, categories, and customer orders.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 👤 User Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* User registration and login
+* Browse products by category
+* Product search
+* Shopping cart management
+* Update item quantities
+* Remove items from cart
+* Checkout process
+* Apply discount vouchers
+* View order history
+* Responsive user interface
 
-## Learning Laravel
+### 🔑 Admin Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Secure admin authentication
+* Dashboard for managing products
+* Create, edit, and delete products
+* Category management
+* View customer orders
+* Order status management
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Built With
 
-## Agentic Development
+* **Laravel 13**
+* **PHP 8**
+* **MySQL**
+* **Blade Templates**
+* **Bootstrap 5**
+* **HTML5**
+* **CSS3**
+* **JavaScript**
+* **Git & GitHub**
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 📂 Project Structure
 
-php artisan boost:install
+```text
+app/
+bootstrap/
+config/
+database/
+public/
+resources/
+routes/
+storage/
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 📸 Screenshots
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+> Add screenshots of your application here.
 
-## Code of Conduct
+Example:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Home Page
+* Product Listing
+* Product Details
+* Shopping Cart
+* Checkout Page
+* Order History
+* Admin Dashboard
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## ⚙️ Installation
 
-## License
+Clone the repository:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+git clone https://github.com/omarehab1234/websiteCommerce.git
+```
+
+Navigate into the project:
+
+```bash
+cd websiteCommerce
+```
+
+Install PHP dependencies:
+
+```bash
+composer install
+```
+
+Install JavaScript dependencies:
+
+```bash
+npm install
+```
+
+Copy the environment file:
+
+```bash
+cp .env.example .env
+```
+
+Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+Configure your database in the `.env` file, then run:
+
+```bash
+php artisan migrate
+```
+
+(Optional) Seed the database if seeders are available:
+
+```bash
+php artisan db:seed
+```
+
+Run the development server:
+
+```bash
+php artisan serve
+```
+
+---
+
+## 📖 Learning Outcomes
+
+This project helped me strengthen my understanding of:
+
+* MVC Architecture
+* Laravel Routing
+* Authentication
+* Database Design
+* Eloquent ORM
+* Form Validation
+* File Uploads
+* Sessions
+* Shopping Cart Logic
+* Voucher System
+* Order Processing
+* CRUD Operations
+* Git Version Control
+
+---
+
+## 🎯 Future Improvements
+
+* Payment gateway integration (Stripe/PayPal)
+* Product reviews and ratings
+* Wishlist functionality
+* Email notifications
+* Inventory management
+* Sales analytics dashboard
+* API for mobile applications
+
+---
+
+## 👨‍💻 Author
+
+**Omar Ehab**
+
+Software Engineering Student
+
+GitHub: https://github.com/omarehab1234
