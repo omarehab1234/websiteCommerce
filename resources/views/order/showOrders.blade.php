@@ -51,6 +51,7 @@
                     <option value="Processing" {{ $order->status == 'Processing' ? 'selected' : '' }}>Processing</option>
                     <option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
                     <option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
+                    <option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
                 </select>
             </td>
             <td>
@@ -71,12 +72,7 @@
             <td>{{ $order->phone }}</td>
             <td>{{Str::limit( $order->address,30) }}</td>
             <td>
-                <form action="{{ route('orders.details', $order) }}" method="POST">
-                    @csrf
-                    <button class="btn btn-success btn-sm">
-                        view
-                    </button>
-                </form>
+                
                 <form action="{{ route('orders.update', $order) }}" method="POST">
                     @csrf
                     @method('PUT')

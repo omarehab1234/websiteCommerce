@@ -41,4 +41,19 @@ class OrderController extends Controller
         }
         session()->forget('cart');
     }
+
+    public function update(Order $order, Request $request){
+        $validatedData = $request->validate([
+            'status' => 'required|in:Pending,Processing,Shipped,Delivered,Cancelled',
+            'payment_method' => 'required|in:Cash,Card',
+            'payment_status' => 'required|in:Pending,Paid,Failed,Refunded'
+        ]);
+        $order->update($validatedData);
+        return redirect()->route('orders.showOrders')->with('success', 'Order status updated successfully.');
+    }
+
+    public function destroy(Order $order){
+        $order->delete();
+        return redirect()->route('orders.showOrders')->with('success', 'Order deleted successfully.');
+    }
 }

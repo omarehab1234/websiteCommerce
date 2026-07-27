@@ -83,5 +83,4 @@ Route::delete('/categories/{category}/delete',[CategoryController::class,'destro
 // order
 Route::get('/orders/index',[OrderController::class,'showOrder'])->name('orders.showOrders');
 Route::put('/orders/{order}/update',[OrderController::class,'updateStatus'])->name('orders.update');
-Route::get('/orders/{order}/details',[OrderController::class,'showDetails'])->name('orders.details');
 Route::delete('/orders/{order}/delete',[OrderController::class,'destroy'])->name('orders.destroy');
