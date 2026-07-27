@@ -61,17 +61,21 @@ storage/
 
 ## 📸 Screenshots
 
-> Add screenshots of your application here.
-
-Example:
-
 * Home Page
+<img width="1901" height="868" alt="image" src="https://github.com/user-attachments/assets/9495f7af-06d5-4064-a637-8e68208ee5e7" />
 * Product Listing
+<img width="1901" height="867" alt="image" src="https://github.com/user-attachments/assets/452622dc-42bb-4e73-a763-c94e5b4ebe36" />
 * Product Details
+<img width="1900" height="867" alt="image" src="https://github.com/user-attachments/assets/6aa37f57-be41-415a-a2d8-948e624c1cb7" />
 * Shopping Cart
+<img width="1896" height="870" alt="image" src="https://github.com/user-attachments/assets/0d1c65ac-7d52-4a4f-b98e-244e569c2b06" />
 * Checkout Page
+<img width="1902" height="865" alt="image" src="https://github.com/user-attachments/assets/51fcb143-2516-4faf-848b-cf2aec20d1a3" />
 * Order History
+<img width="1918" height="870" alt="image" src="https://github.com/user-attachments/assets/2bed1d51-4776-40c8-a2d7-dbf77bd9e312" />
 * Admin Dashboard
+<img width="1902" height="870" alt="Screenshot 2026-07-27 111530" src="https://github.com/user-attachments/assets/2c2f8186-6e9f-4824-ae5c-e4aab89460ab" />
+
 
 ---
 
