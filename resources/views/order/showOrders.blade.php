@@ -46,7 +46,7 @@
             <td>{{ $order->user->name }}</td>
             <td>{{ $order->total_price }}EGP</td>
             <td>
-                <select name="status"  value ="{{ $order->status }}">
+                <select name="status"  value ="{{ $order->status }}" form="updateForm-{{ $order->id }}">
                     <option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
                     <option value="Processing" {{ $order->status == 'Processing' ? 'selected' : '' }}>Processing</option>
                     <option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
@@ -55,14 +55,14 @@
                 </select>
             </td>
             <td>
-                <select name="payment_method">
+                <select name="payment_method" form="updateForm-{{ $order->id }}">
                     <option value="Cash" {{ $order->payment_method == 'Cash' ? 'selected' : '' }}>Cash</option>
                     <option value="Card" {{ $order->payment_method == 'Card' ? 'selected' : '' }}>Card</option>
                 </select>
             </td>
 
             <td>
-                <select name="payment_status">
+                <select name="payment_status" form="updateForm-{{ $order->id }}">
                     <option value="Pending" {{ $order->payment_status == 'Pending' ? 'selected' : '' }}>Pending</option>
                     <option value="Paid" {{ $order->payment_status == 'Paid' ? 'selected' : '' }}>Paid</option>
                     <option value="Failed" {{ $order->payment_status == 'Failed' ? 'selected' : '' }}>Failed</option>
@@ -73,7 +73,7 @@
             <td>{{Str::limit( $order->address,30) }}</td>
             <td>
                 
-                <form action="{{ route('orders.update', $order) }}" method="POST">
+                <form id='updateForm-{{ $order->id }}' action="{{ route('orders.update', $order) }}" method="POST">
                     @csrf
                     @method('PUT')
 

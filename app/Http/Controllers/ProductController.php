@@ -46,7 +46,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:3048',
         ], [
             'name.required' => 'Product name is required.',
             'name.min' => 'Product name must be at least 3 characters.',
